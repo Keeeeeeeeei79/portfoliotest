@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kei Endo | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #111111; --surface: #1a1a1a; --surface2: #222222; --border: #2e2e2e;
+    --accent: #e8632a; --white: #ffffff; --text: #e8e8e8; --muted: #b0b0b0; --muted2: #777777;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(17,17,17,0.97); backdrop-filter: blur(12px);
+    padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between;
+    height: 60px; border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'Syne', sans-serif; color: var(--white); font-size: 1rem; font-weight: 800; text-decoration: none; letter-spacing: -0.02em; }
+  .nav-brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 0.2rem; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; padding: 0.35rem 0.75rem; border-radius: 6px; transition: all 0.18s; }
+  .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+  .nav-links a.active { color: var(--white); }
+
+  .hero { min-height: 100vh; padding: 60px 2.5rem 0; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid var(--border); }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; padding: 4rem 0; }
+  .hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; margin-bottom: 4rem; }
+  .hero-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+  .hero-label::before { content: ''; width: 1.5rem; height: 1px; background: var(--accent); display: block; }
+  h1.hero-title { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 800; color: var(--white); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 1.5rem; }
+  h1.hero-title span { color: var(--accent); }
+  .hero-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.75; max-width: 480px; font-weight: 300; }
+  .hero-meta { display: flex; flex-direction: column; gap: 0.7rem; align-items: flex-end; padding-top: 0.5rem; }
+  .hero-badge { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--border); color: var(--muted); padding: 0.4rem 0.9rem; border-radius: 99px; }
+  .hero-badge.on { border-color: var(--accent); color: var(--accent); background: rgba(232,99,42,0.08); }
+
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .stat-cell { padding: 1.8rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 0.3rem; }
+  .stat-num em { color: var(--accent); font-style: normal; }
+  .stat-label { font-size: 0.73rem; color: var(--muted); }
+
+  .grid-wrap { max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; }
+  .grid-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+  .grid-header-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--white); letter-spacing: -0.02em; }
+  .grid-header-sub { font-size: 0.75rem; color: var(--muted); }
+
+  .pg { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .pg-item { background: var(--surface); padding: 2rem 2.2rem; text-decoration: none; color: inherit; transition: background 0.18s; display: block; position: relative; overflow: hidden; }
+  .pg-item:hover { background: var(--surface2); }
+  .pg-item:hover .pg-arrow { transform: translate(3px,-3px); }
+  .pg-arrow { position: absolute; top: 1.4rem; right: 1.4rem; color: var(--muted2); font-size: 1rem; transition: transform 0.2s; }
+  .pg-num { font-size: 0.65rem; color: var(--muted2); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.1rem; }
+  .pg-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.5rem; line-height: 1.2; }
+  .pg-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .pg-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
+  .pg-tag { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--border); color: var(--muted); padding: 0.18rem 0.55rem; border-radius: 3px; }
+
+  footer { border-top: 1px solid var(--border); padding: 1.8rem 2.5rem; display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 0.76rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  .footer-right { display: flex; gap: 1.5rem; }
+
+  .fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media(max-width:768px) { .hero-top{flex-direction:column;} .stats-row{grid-template-columns:repeat(2,1fr);} .pg{grid-template-columns:1fr;} nav{padding:0 1rem;} .nav-links a{font-size:0.72rem;padding:0.3rem 0.5rem;} }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Kei Endo<span>.</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="pplg.html">Goals</a>
+    <a href="cv.html">CV</a>
+    <a href="reflections.html">Reflections</a>
+    <a href="peer.html">Peer Review</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div>
+        <div class="hero-label">ICL Portfolio · Auckland, NZ</div>
+        <h1 class="hero-title">Professional<br><span>Portfolio.</span></h1>
+        <p class="hero-desc">Physiotherapist with 5+ years clinical experience in Japan, now building a career in marketing and data analytics in New Zealand through ICL.</p>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-badge on">● ICL · 2024–Present</div>
+        <div class="hero-badge">Auckland, New Zealand</div>
+        <div class="hero-badge">PT → Data & Marketing</div>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-cell fade-in"><div class="stat-num">5<em>+</em></div><div class="stat-label">Years Physiotherapist, Japan</div></div>
+      <div class="stat-cell fade-in"><div class="stat-num">5</div><div class="stat-label">Reflective Journal Posts</div></div>
+      <div class="stat-cell fade-in"><div class="stat-num">10</div><div class="stat-label">Learning Goals (PPLG)</div></div>
+      <div class="stat-cell fade-in"><div class="stat-num"><em>NZ</em></div><div class="stat-label">Career Focus — Auckland</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="grid-wrap">
+  <div class="grid-header">
+    <div class="grid-header-title">Portfolio Contents</div>
+    <div class="grid-header-sub">Section 1 · Professional Development &nbsp;/&nbsp; Section 2 · Reflective Learning</div>
+  </div>
+  <div class="pg">
+    <a href="pplg.html" class="pg-item fade-in">
+      <div class="pg-arrow">↗</div>
+      <div class="pg-num">01 · Professional Development</div>
+      <div class="pg-title">Personal & Professional<br>Learning Goals</div>
+      <div class="pg-desc">10 structured objectives guiding my transition from healthcare into marketing and data analytics.</div>
+      <div class="pg-tags"><span class="pg-tag">Data Analytics</span><span class="pg-tag">Marketing</span><span class="pg-tag">Leadership</span><span class="pg-tag">Career Strategy</span></div>
+    </a>
+    <a href="cv.html" class="pg-item fade-in">
+      <div class="pg-arrow">↗</div>
+      <div class="pg-num">02 · Professional Development</div>
+      <div class="pg-title">Curriculum<br>Vitae</div>
+      <div class="pg-desc">NZ-style CV covering 5+ years as a physiotherapist in Japan and current development in Auckland.</div>
+      <div class="pg-tags"><span class="pg-tag">Physiotherapy</span><span class="pg-tag">Hospitality NZ</span><span class="pg-tag">ICL Studies</span></div>
+    </a>
+    <a href="reflections.html" class="pg-item fade-in">
+      <div class="pg-arrow">↗</div>
+      <div class="pg-num">03 · Reflective Learning</div>
+      <div class="pg-title">Reflective<br>Journals</div>
+      <div class="pg-desc">Five posts reflecting on key learnings from ICL coursework and how I have applied them in real contexts.</div>
+      <div class="pg-tags"><span class="pg-tag">Leadership Theory</span><span class="pg-tag">Cross-cultural</span><span class="pg-tag">Goal Setting</span><span class="pg-tag">Resilience</span></div>
+    </a>
+    <a href="peer.html" class="pg-item fade-in">
+      <div class="pg-arrow">↗</div>
+      <div class="pg-num">04 · Reflective Learning</div>
+      <div class="pg-title">Peer<br>Evaluation</div>
+      <div class="pg-desc">Reflection on feedback from ICL classmates and how it has shaped my professional development.</div>
+      <div class="pg-tags"><span class="pg-tag">Peer Feedback</span><span class="pg-tag">Self-Awareness</span><span class="pg-tag">Communication</span></div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span>Kei Endo · ICL Professional Portfolio · Auckland · 2026</span>
+  <div class="footer-right"><a href="cv.html">CV</a><a href="reflections.html">Journals</a><a href="peer.html">Peer Review</a></div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*100); });
+  },{threshold:0.08});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

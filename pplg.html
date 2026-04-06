@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Goals | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111111;--surface:#1a1a1a;--surface2:#222222;--border:#2e2e2e;--accent:#e8632a;--white:#ffffff;--text:#e8e8e8;--muted:#b0b0b0;--muted2:#777777;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);}
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(17,17,17,0.97);backdrop-filter:blur(12px);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:1px solid var(--border);}
+.nav-brand{font-family:'Inter',sans-serif;color:var(--white);font-size:1rem;font-weight:800;text-decoration:none;letter-spacing:-0.02em;}
+.nav-brand span{color:var(--accent);}
+.nav-links{display:flex;gap:0.2rem;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;padding:0.35rem 0.75rem;border-radius:6px;transition:all 0.18s;}
+.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06);}
+.nav-links a.active{color:var(--white);}
+
+.page-hero{background:var(--surface);padding:100px 2.5rem 3rem;border-bottom:1px solid var(--border);}
+.page-hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:center;}
+.breadcrumb{font-size:0.72rem;color:var(--muted2);margin-bottom:1rem;}
+.breadcrumb a{color:var(--accent);text-decoration:none;}
+.badge{display:inline-flex;align-items:center;border:1px solid rgba(232,99,42,0.4);color:var(--accent);font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:3px;margin-bottom:1rem;background:rgba(232,99,42,0.06);}
+.page-hero h1{font-family:'Inter',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:var(--white);letter-spacing:-0.03em;line-height:1.05;margin-bottom:0.8rem;}
+.page-hero h1 em{color:var(--accent);font-style:normal;}
+.page-hero p{color:var(--muted);font-size:0.9rem;line-height:1.7;font-weight:300;}
+
+/* SKILL BARS — like "My Vision" page */
+.skill-panel{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1.5rem;}
+.skill-panel-title{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--muted);font-weight:700;margin-bottom:1.2rem;}
+.skill-row{margin-bottom:1.1rem;}
+.skill-row:last-child{margin-bottom:0;}
+.skill-meta{display:flex;justify-content:space-between;margin-bottom:0.4rem;}
+.skill-name{font-size:0.82rem;color:var(--text);font-weight:500;}
+.skill-status{font-size:0.7rem;color:var(--accent);font-weight:600;letter-spacing:0.06em;}
+.skill-bar{height:3px;background:var(--border);border-radius:99px;overflow:hidden;}
+.skill-fill{height:100%;background:var(--accent);border-radius:99px;width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);}
+
+.content{max-width:1100px;margin:0 auto;padding:3.5rem 2.5rem 6rem;}
+
+/* SECTION HEADER */
+.section-label{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);font-weight:700;margin-bottom:0.6rem;}
+.section-heading{font-family:'Inter',sans-serif;font-size:1.4rem;font-weight:800;color:var(--white);letter-spacing:-0.02em;margin-bottom:1.5rem;}
+
+/* GOAL CARDS — Challenge/Goal/Approach/Outcome style */
+.goals-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:4rem;}
+.goal-card{background:var(--surface);padding:1.6rem 2rem;display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:start;transition:background 0.18s;}
+.goal-card:hover{background:var(--surface2);}
+.goal-n{font-family:'Inter',sans-serif;font-size:1.4rem;font-weight:800;color:var(--muted2);line-height:1;}
+.goal-n em{font-style:normal;color:var(--accent);}
+.goal-content{}
+.goal-title{font-size:0.93rem;font-weight:600;color:var(--white);margin-bottom:0.35rem;}
+.goal-body{font-size:0.83rem;color:var(--muted);line-height:1.65;}
+.goal-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.7rem;}
+.goal-tag{font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted2);padding:0.15rem 0.5rem;border-radius:2px;}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid var(--border);margin:3rem 0;}
+
+/* SUMMARY */
+.summary{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);padding:1.6rem 2rem;margin-top:1rem;}
+.summary p{font-size:0.88rem;color:var(--muted);line-height:1.75;font-weight:300;}
+.summary strong{color:var(--text);font-weight:500;}
+
+footer{border-top:1px solid var(--border);padding:1.8rem 2.5rem;display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:0.76rem;}
+footer a{color:var(--accent);text-decoration:none;}
+.footer-right{display:flex;gap:1.5rem;}
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){.page-hero-inner{grid-template-columns:1fr;} .skill-panel{display:none;} nav{padding:0 1rem;} .nav-links a{font-size:0.72rem;padding:0.3rem 0.5rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Kei Endo<span>.</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="pplg.html" class="active">Goals</a>
+    <a href="cv.html">CV</a><a href="reflections.html">Reflections</a><a href="peer.html">Peer Review</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="breadcrumb"><a href="index.html">Home</a> / Professional Development</div>
+      <div class="badge">Section 1 · 25 Marks</div>
+      <h1>Personal & Professional<br><em>Learning Goals</em></h1>
+      <p>10 structured objectives guiding my transition from clinical healthcare into marketing and data analytics in New Zealand.</p>
+    </div>
+    <div class="skill-panel">
+      <div class="skill-panel-title">My Current Skills — Status</div>
+      <div class="skill-row">
+        <div class="skill-meta"><span class="skill-name">Leadership & Management</span><span class="skill-status">Applied</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="75"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-meta"><span class="skill-name">Cross-cultural Communication</span><span class="skill-status">Developing</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="65"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-meta"><span class="skill-name">Data Analysis</span><span class="skill-status">Building</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="35"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-meta"><span class="skill-name">Digital Marketing</span><span class="skill-status">Building</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="30"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-meta"><span class="skill-name">Business English</span><span class="skill-status">Growing</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="60"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-meta"><span class="skill-name">NZ Business Network</span><span class="skill-status">Growing</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="20"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- PERSONAL -->
+  <div class="section-label fade-in">Personal Learning Goals</div>
+  <div class="section-heading fade-in">Skills & Competencies to Develop</div>
+
+  <div class="goals-grid">
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>1</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Data Analysis & Literacy</div>
+        <div class="goal-body">Develop proficiency in data analysis tools — advanced Excel, Google Analytics, and introductory Python or SQL. I aim to progress from basic data interpretation to independently building and presenting data-driven insights, foundational for any strategic business role.</div>
+        <div class="goal-tags"><span class="goal-tag">Excel</span><span class="goal-tag">Python</span><span class="goal-tag">SQL</span><span class="goal-tag">Google Analytics</span></div>
+      </div>
+    </div>
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>2</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Business Communication in English</div>
+        <div class="goal-body">Strengthen written and verbal business communication to a level suitable for a New Zealand corporate environment — including report writing, presentations, and formal correspondence. Critical for career progression as an international professional.</div>
+        <div class="goal-tags"><span class="goal-tag">Report Writing</span><span class="goal-tag">Presentations</span><span class="goal-tag">Professional English</span></div>
+      </div>
+    </div>
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>3</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Leadership & Team Management</div>
+        <div class="goal-body">Drawing on ICL's Leading & Management course (9230), I aim to deepen my understanding of transformational and situational leadership and actively apply these frameworks — in my current café role and in future business environments.</div>
+        <div class="goal-tags"><span class="goal-tag">Transformational Leadership</span><span class="goal-tag">Situational Leadership</span><span class="goal-tag">Team Management</span></div>
+      </div>
+    </div>
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>4</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Digital Marketing Fundamentals</div>
+        <div class="goal-body">Complete at least one recognised certification — Google Digital Garage or HubSpot Academy — to build structured knowledge of SEO, content strategy, and campaign analytics. This provides a formal credential to complement my ICL business studies.</div>
+        <div class="goal-tags"><span class="goal-tag">SEO</span><span class="goal-tag">Campaign Analytics</span><span class="goal-tag">Content Strategy</span><span class="goal-tag">Google Certification</span></div>
+      </div>
+    </div>
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>5</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Cross-cultural Business Competency</div>
+        <div class="goal-body">Continue to develop cultural intelligence through my lived experience in New Zealand. Bridging Japanese and New Zealand professional norms — particularly around communication styles and workplace expectations — is an asset in international business contexts.</div>
+        <div class="goal-tags"><span class="goal-tag">Cultural Intelligence</span><span class="goal-tag">Adaptability</span><span class="goal-tag">Cross-cultural Communication</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PROFESSIONAL -->
+  <div class="section-label fade-in">Professional Learning Goals</div>
+  <div class="section-heading fade-in">Career Objectives</div>
+
+  <div class="goals-grid">
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>1</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Secure a Business / Marketing Analyst Role in NZ</div>
+        <div class="goal-body">Within 2–3 years, transition from hospitality into an entry-level business analyst or marketing coordinator role in New Zealand. I will build a portfolio of data projects and complete the required qualifications through ICL and further study.</div>
+        <div class="goal-tags"><span class="goal-tag">Business Analyst</span><span class="goal-tag">Marketing Coordinator</span><span class="goal-tag">NZ Career</span></div>
+      </div>
+    </div>
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>2</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Complete a Business or Data-Related Qualification</div>
+        <div class="goal-body">Complete a relevant diploma or degree in business, marketing or data analytics to support my career transition and formally demonstrate competency to New Zealand employers. ICL studies are the foundation of this pathway.</div>
+        <div class="goal-tags"><span class="goal-tag">Diploma / Degree</span><span class="goal-tag">ICL</span><span class="goal-tag">Further Study</span></div>
+      </div>
+    </div>
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>3</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Expand Professional Network in NZ Business Community</div>
+        <div class="goal-body">Attend networking events, join professional associations such as the Marketing Association of New Zealand, and develop a LinkedIn profile reflecting my skills and international experience. Building genuine connections is essential for a career change.</div>
+        <div class="goal-tags"><span class="goal-tag">Networking</span><span class="goal-tag">LinkedIn</span><span class="goal-tag">MANZ</span></div>
+      </div>
+    </div>
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>4</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Apply Data Thinking in Real-World Contexts</div>
+        <div class="goal-body">Seek projects, volunteer roles, or coursework where I can apply data analysis and marketing strategy in practice. Creating a tangible body of work is essential for demonstrating capability to employers without direct industry experience.</div>
+        <div class="goal-tags"><span class="goal-tag">Portfolio Projects</span><span class="goal-tag">Data Analysis</span><span class="goal-tag">Volunteer Work</span></div>
+      </div>
+    </div>
+    <div class="goal-card fade-in">
+      <div class="goal-n">0<em>5</em></div>
+      <div class="goal-content">
+        <div class="goal-title">Long-Term: Strategy or Marketing Management Role</div>
+        <div class="goal-body">Over 5+ years, move into a strategic advisory or marketing management role combining analytical skills with business strategy. My healthcare background in evidence-based decision making and data management provides a distinctive foundation.</div>
+        <div class="goal-tags"><span class="goal-tag">Marketing Management</span><span class="goal-tag">Strategy</span><span class="goal-tag">5-Year Plan</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary fade-in">
+    <p>These goals are <strong>progressive and interconnected</strong> — each personal learning goal directly supports a professional objective. My background as a physiotherapist, where evidence-based analysis and data management are central, gives me a unique analytical foundation that differentiates me in a business context.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span>Kei Endo · ICL Professional Portfolio · 2026</span>
+  <div class="footer-right"><a href="index.html">Home</a><a href="cv.html">CV →</a></div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e,i)=>{if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*80);});
+  },{threshold:0.05});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+  // Skill bars animate when visible
+  const skillObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.dataset.w + '%';
+        });
+      }
+    });
+  },{threshold:0.3});
+  document.querySelectorAll('.skill-panel').forEach(p=>skillObs.observe(p));
+</script>
+</body>
+</html>
