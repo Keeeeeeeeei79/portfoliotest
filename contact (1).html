@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Kei Endo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #111111; --surface: #1a1a1a; --surface2: #222222; --border: #2e2e2e;
+    --accent: #e8632a; --white: #ffffff; --text: #e8e8e8; --muted: #b0b0b0; --muted2: #777777;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(17,17,17,0.97); backdrop-filter: blur(12px);
+    padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between;
+    height: 60px; border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'Syne', sans-serif; color: var(--white); font-size: 1rem; font-weight: 800; text-decoration: none; letter-spacing: -0.02em; }
+  .nav-brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 0.2rem; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; padding: 0.35rem 0.75rem; border-radius: 6px; transition: all 0.18s; }
+  .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+  .nav-links a.active { color: var(--white); }
+
+  .page-header { padding: 120px 2.5rem 3rem; border-bottom: 1px solid var(--border); }
+  .page-header-inner { max-width: 1100px; margin: 0 auto; }
+  .page-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .page-label::before { content: ''; width: 1.5rem; height: 1px; background: var(--accent); display: block; }
+  .page-title { font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; }
+  .page-title em { color: var(--accent); font-style: normal; }
+  .page-subtitle { color: var(--muted); font-size: 0.95rem; line-height: 1.75; font-weight: 300; margin-top: 1rem; max-width: 550px; }
+
+  .content { max-width: 1100px; margin: 0 auto; padding: 4rem 2.5rem; }
+
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .contact-card {
+    background: var(--surface); padding: 2.5rem 2rem; text-decoration: none; color: inherit;
+    transition: background 0.18s; display: flex; flex-direction: column; align-items: center;
+    text-align: center; gap: 1rem; position: relative;
+  }
+  .contact-card:hover { background: var(--surface2); }
+  .contact-card:hover .contact-icon { color: var(--accent); border-color: var(--accent); }
+  .contact-icon {
+    width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+    color: var(--muted); transition: all 0.18s;
+  }
+  .contact-type { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); font-weight: 700; }
+  .contact-value { font-size: 1rem; color: var(--white); font-weight: 600; word-break: break-all; }
+  .contact-action { font-size: 0.75rem; color: var(--accent); font-weight: 500; margin-top: 0.3rem; }
+
+  .contact-note {
+    margin-top: 3rem; padding: 2rem; border: 1px solid var(--border); background: var(--surface);
+    text-align: center;
+  }
+  .contact-note p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; font-weight: 300; }
+  .contact-note strong { color: var(--text); font-weight: 500; }
+
+  footer { border-top: 1px solid var(--border); padding: 1.8rem 2.5rem; display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 0.76rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  .footer-right { display: flex; gap: 1.5rem; }
+
+  .fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media(max-width:768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-links a { font-size: 0.72rem; padding: 0.3rem 0.5rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Kei Endo<span>.</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="pplg.html">Goals</a>
+    <a href="cv.html">CV</a>
+    <a href="reflections.html">Reflections</a>
+    <a href="peer.html">Peer Review</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-label">Portfolio · Connect</div>
+    <h1 class="page-title">Get in <em>Touch.</em></h1>
+    <p class="page-subtitle">Feel free to reach out via phone, email, or LinkedIn. I'm always open to connecting with new people and exploring opportunities.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="contact-grid fade-in">
+    <a href="tel:0274605847" class="contact-card">
+      <div class="contact-icon">📞</div>
+      <div class="contact-type">Phone</div>
+      <div class="contact-value">027 460 5847</div>
+      <div class="contact-action">Tap to call →</div>
+    </a>
+    <a href="mailto:1372012.kei@gmail.com" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-type">Email</div>
+      <div class="contact-value">1372012.kei@gmail.com</div>
+      <div class="contact-action">Send an email →</div>
+    </a>
+    <a href="https://www.linkedin.com/feed/" target="_blank" class="contact-card">
+      <div class="contact-icon">in</div>
+      <div class="contact-type">LinkedIn</div>
+      <div class="contact-value">linkedin.com/in/kei-endo</div>
+      <div class="contact-action">View profile →</div>
+    </a>
+  </div>
+
+  <div class="contact-note fade-in">
+    <p>Based in <strong>Auckland, New Zealand</strong>. Currently studying at <strong>ICL</strong> and working as a barista. Open to conversations about <strong>data analytics</strong>, <strong>marketing</strong>, and career opportunities.</p>
+  </div>
+</div>
+
+<footer>
+  <span>Kei Endo · ICL Professional Portfolio · Auckland · 2026</span>
+  <div class="footer-right"><a href="about.html">About</a><a href="cv.html">CV</a><a href="contact.html">Contact</a></div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*100); });
+  },{threshold:0.08});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
